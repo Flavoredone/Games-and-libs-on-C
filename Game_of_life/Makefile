@@ -20,7 +20,7 @@ v4: run
 	./life < assets/4.txt
 
 style:
-	clang-format -style='{BasedOnStyle: Google, IndentWidth: 4, AlignConsecutiveMacros: AcrossEmptyLines}' -i *.c *.h
+	clang-format -style='{BasedOnStyle: Google, IndentWidth: 2, AlignConsecutiveMacros: AcrossEmptyLines}' -i *.c *.h
 	clear
 
 clean:
