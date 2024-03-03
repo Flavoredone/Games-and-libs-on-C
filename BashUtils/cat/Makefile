@@ -22,6 +22,10 @@ good: clean all test
 	sleep 3
 	clear
 
+style:
+	clang-format -style='{BasedOnStyle: Google, IndentWidth: 4, AlignConsecutiveMacros: AcrossEmptyLines}' -i *.c *.h
+	clear
+
 ############################## variable ##################################
 
 s21_grep:
