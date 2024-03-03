@@ -1,5 +1,5 @@
 # Games-and-libs-on-C
-The repository contains a collection of games, standard libs, bash functions written in the C language
+The repository contains a collection of games, standard libs, bash functions written on the C language
 
 ## 1. BashUtils
 ```
