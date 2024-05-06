@@ -5,6 +5,9 @@ The repository contains a collection of games, standard libs, bash functions wri
 ```
 cat and grep functions written on C
 ```
+
+![alt text](assets/simplebash.png)
+
 To run the `cat` function:
 1. Go to the directory with Makefile: `cd Bashutils/cat`
 2. Run the command `make good`
@@ -25,10 +28,12 @@ To run the terminal `game of life`:
 2. Run the command `make v1` or `make v2` or `make v3` or `make v4`, where v1-v4 are links to assets
 3. U can also edit the txt assets simply changing '0' grids to '1' and make your own initial conditions
 
-## 3. Tetris (soon)
+## 3. Tetris
 ```
 A simple retro game written on C with standard libs and `ncurses.h`
 ```
+
+![alt text](assets/tetris.png)
 
 To run the terminal `Tetris`:
 1. Go to the directory with Makefile: `cd Tetris`

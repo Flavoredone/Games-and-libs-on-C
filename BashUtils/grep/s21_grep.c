@@ -5,7 +5,8 @@ int main(int argc, char *argv[]) {
   flags.reg = calloc(1, sizeof(char));
   int fi = 0;
 
-  if (parse(argc, argv, &flags, &fi)) compilereg(argc, argv, &flags, fi);
+  if (parse(argc, argv, &flags, &fi))
+    compilereg(argc, argv, &flags, fi);
   free(flags.reg);
   return 0;
 }
@@ -16,48 +17,50 @@ int parse(int argc, char *argv[], Flags *flags, int *fi) {
 
   while ((res = getopt_long(argc, argv, fl, NULL, NULL)) != -1 && nofl) {
     switch (res) {
-      case 'e':
-        flags->e = 1;
-        len = strlen(optarg);
-        flags->reg = realloc(flags->reg, strlen(flags->reg) + len + 2);
-        strcat(flags->reg, optarg);
-        strcat(flags->reg, "|");
+    case 'e':
+      flags->e = 1;
+      len = strlen(optarg);
+      flags->reg = realloc(flags->reg, strlen(flags->reg) + len + 2);
+      strcat(flags->reg, optarg);
+      strcat(flags->reg, "|");
 
-        break;
-      case 'i':
-        flags->i = 1;
-        break;
-      case 'c':
-        flags->c = 1;
-        break;
-      case 'l':
-        flags->l = 1;
-        break;
-      case 'n':
-        flags->n = 1;
-        break;
-      case 'v':
-        flags->v = 1;
-        break;
-      case 'h':
-        flags->h = 1;
-        break;
-      case 's':
-        flags->s = 1;
-        break;
-      case 'f':
-        flags->f = 1;
-        nofl = regopen(flags, optarg);
-        break;
-      case 'o':
-        flags->o = 1;
-        break;
-      default:
-        nofl = 0;
+      break;
+    case 'i':
+      flags->i = 1;
+      break;
+    case 'c':
+      flags->c = 1;
+      break;
+    case 'l':
+      flags->l = 1;
+      break;
+    case 'n':
+      flags->n = 1;
+      break;
+    case 'v':
+      flags->v = 1;
+      break;
+    case 'h':
+      flags->h = 1;
+      break;
+    case 's':
+      flags->s = 1;
+      break;
+    case 'f':
+      flags->f = 1;
+      nofl = regopen(flags, optarg);
+      break;
+    case 'o':
+      flags->o = 1;
+      break;
+    default:
+      nofl = 0;
     }
   }
-  if (flags->c || flags->l) flags->n = 0;
-  if (flags->v) flags->o = 0;
+  if (flags->c || flags->l)
+    flags->n = 0;
+  if (flags->v)
+    flags->o = 0;
   *fi = optind;
   return nofl;
 }
@@ -71,7 +74,8 @@ int regopen(Flags *flags, char *path) {
   if (file) {
     while ((getline(&str, &len_string, file)) != -1) {
       int len = strlen(str);
-      if (str[len - 1] == '\n') str[len - 1] = '\0';
+      if (str[len - 1] == '\n')
+        str[len - 1] = '\0';
       flags->reg = realloc(flags->reg, strlen(flags->reg) + len + 2);
       strcat(flags->reg, optarg);
       strcat(flags->reg, "|");
@@ -125,9 +129,11 @@ void grep21(regex_t *regex, char *path, Flags *flags, int count_files) {
           lfl = 1;
 
         else if (!flags->c) {
-          if (count_files > 1 && !flags->h) printf("%s:", path);
+          if (count_files > 1 && !flags->h)
+            printf("%s:", path);
 
-          if (flags->n) printf("%d:", line);
+          if (flags->n)
+            printf("%d:", line);
 
           if (flags->o) {
             printf("%.*s\n", eo - so, &str[so]);
@@ -136,7 +142,8 @@ void grep21(regex_t *regex, char *path, Flags *flags, int count_files) {
             end = str[strlen(str) - 1] == '\n' ? 0 : 1;
           }
         }
-        if (flags->c) cfl++;
+        if (flags->c)
+          cfl++;
       }
       line++;
     }
@@ -146,9 +153,11 @@ void grep21(regex_t *regex, char *path, Flags *flags, int count_files) {
       else
         printf("%d\n", cfl);
     }
-    if (flags->l && lfl == 1) printf("%s\n", path);
+    if (flags->l && lfl == 1)
+      printf("%s\n", path);
 
-    if (end) printf("\n");
+    if (end)
+      printf("\n");
 
     free(str);
     fclose(file);
